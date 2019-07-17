@@ -1,0 +1,39 @@
+{
+  "name": "vanila-lessons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ym-men/vanila-lessons.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ym-men/vanila-lessons/issues"
+  },
+  "homepage": "https://github.com/ym-men/vanila-lessons#readme",
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid",
+    "proseWrap": "never"
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.3",
+    "eslint": "5.6.1",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-plugin-mocha": "5.2.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "7.11.1",
+    "prettier": "1.14.3"
+  }
+}
