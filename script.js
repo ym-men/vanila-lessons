@@ -62,6 +62,22 @@ let persons = [
   },
 ];
 
+const createRemoveBtn = (id) => {
+  const removeBtn = document.createElement('button');
+
+  removeBtn.innerHTML = 'X';
+
+  removeBtn.onclick = evt => {
+    const el = evt.target.parentNode;
+
+    el.parentNode.removeChild(el);
+
+    persons = persons.filter(person => person.id !== id);
+  };
+
+  return removeBtn;
+};
+
 document.addEventListener('DOMContentLoaded', function(event) {
   const tableBody = document.getElementById('table_body');
   const buttonAdd = document.getElementById('buttonAdd');
@@ -80,19 +96,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         row.appendChild(cell);
       }
 
-      const id = data[i].id;
-
-      const removeBtn = document.createElement('button');
-
-      removeBtn.innerHTML = 'X';
-
-      removeBtn.onclick = evt => {
-        const el = evt.target.parentNode;
-
-        el.parentNode.removeChild(el);
-
-        persons = persons.filter(person => person.id !== id);
-      };
+      const removeBtn = createRemoveBtn(data[i].id);
 
       row.appendChild(removeBtn);
 
