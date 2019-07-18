@@ -9,179 +9,130 @@
 Пишешь телефон,нажимаешь на кнопку серч,фрмируется еще одна табличка с результами, которые соответствуют попаданию номера телефона/
  */
 
-document.addEventListener("DOMContentLoaded", function(event) {
-
-var persons = [{
-    id: "1",
-    name: "Mr First",
-    phone: "+39161212321"
+let persons = [
+  {
+    id: '1',
+    name: 'Mr First',
+    phone: '+39161212321',
   },
   {
-    id: "2",
-    name: "Mr Second",
-    phone: "+39161212322"
+    id: '2',
+    name: 'Mr Second',
+    phone: '+39161212322',
   },
   {
-    id: "3",
-    name: "Mr Third",
-    phone: "+39161212323"
+    id: '3',
+    name: 'Mr Third',
+    phone: '+39161212323',
   },
   {
-    id: "4",
-    name: "Mr Fourth",
-    phone: "+39161212324"
+    id: '4',
+    name: 'Mr Fourth',
+    phone: '+39161212324',
   },
   {
-    id: "5",
-    name: "Mr Fifth",
-    phone: "+39161212325"
+    id: '5',
+    name: 'Mr Fifth',
+    phone: '+39161212325',
   },
   {
-    id: "6",
-    name: "Mr Sixth",
-    phone: "+39161212326"
+    id: '6',
+    name: 'Mr Sixth',
+    phone: '+39161212326',
   },
   {
-    id: "7",
-    name: "Mr Seventh",
-    phone: "+39161212327"
+    id: '7',
+    name: 'Mr Seventh',
+    phone: '+39161212327',
   },
   {
-    id: "8",
-    name: "Mr Eighth",
-    phone: "+39161212328"
+    id: '8',
+    name: 'Mr Eighth',
+    phone: '+39161212328',
   },
   {
-    id: "9",
-    name: "Mr Ninth",
-    phone: "+39161212329"
+    id: '9',
+    name: 'Mr Ninth',
+    phone: '+39161212329',
   },
   {
-    id: "10",
-    name: "Mr Tenth",
-    phone: "+39161212301"
+    id: '10',
+    name: 'Mr Tenth',
+    phone: '+39161212301',
   },
 ];
 
-var tableBody = document.getElementById('table_body');
+document.addEventListener('DOMContentLoaded', function(event) {
+  const tableBody = document.getElementById('table_body');
+  const buttonAdd = document.getElementById('buttonAdd');
+  const filterInput = document.getElementById('filter');
 
-/*var createRemoveButton = () => {
-  var btn = document.createElement("button");
-  btn.innerHTML = "X";
+  function createTable(data) {
+    tableBody.innerHTML = '';
 
+    for (let i = 0; i < data.length; i++) {
+      const row = document.createElement('tr');
 
-  btn.onclick = (evt) => {
-    var el = evt.target.parentNode;
-    el.parentNode.removeChild(el);
+      for (const key in data[i]) {
+        const cell = document.createElement('td');
 
+        cell.innerHTML = data[i][key];
+        row.appendChild(cell);
+      }
+
+      const id = data[i].id;
+
+      const removeBtn = document.createElement('button');
+
+      removeBtn.innerHTML = 'X';
+
+      removeBtn.onclick = evt => {
+        const el = evt.target.parentNode;
+
+        el.parentNode.removeChild(el);
+
+        persons = persons.filter(person => person.id !== id);
+      };
+
+      row.appendChild(removeBtn);
+
+      tableBody.appendChild(row);
+    }
   }
 
-  return btn;
-}*/
+  createTable(persons);
 
-function createTable() {
+  // Other Buttons
 
-  for (var i = 0; i < persons.length; i++) {
-
-    var row = document.createElement("tr");
-
-    for (var key in persons[i]) {
-
-      var cell = document.createElement("td");
-
-      cell.innerHTML = persons[i][key];
-      row.appendChild(cell);
-    }
-
-    const id = persons[i].id;
-    var btn = document.createElement("button");
-    btn.innerHTML = "X";
-
-    btn.onclick = (evt) => {
-      var el = evt.target.parentNode;
-      el.parentNode.removeChild(el);
-
-      persons = persons.filter(person => person.id !== id);
-    }
-
-    row.appendChild(btn);
-
-    tableBody.appendChild(row);
-
-  }
-
-  buttonConfirm.onclick = () => {
-    var inputData = {
-      "id": Math.floor(Math.random() * 100),
-      "name": 0,
-      "phone": 0
-
+  buttonAdd.onclick = () => {
+    const inputData = {
+      id: Math.floor(Math.random() * 100),
+      name: 0,
+      phone: 0,
     };
 
-    inputData.name = document.getElementById("input").value;
+    inputData.name = document.getElementById('input').value;
+    inputData.phone = document.getElementById('inputSecond').value;
 
-    inputData.phone = document.getElementById("inputSecond").value;
-    if (inputData.name != "" && inputData.phone != "") {
+    if (inputData.name && inputData.phone) {
       persons.push(inputData);
     }
 
+    document.getElementById('input').value = '';
+    document.getElementById('inputSecond').value = '';
 
-    var inputData = {};
-    document.getElementById("input").value = "";
-    document.getElementById("inputSecond").value = "";
+    createTable(persons);
+  };
 
-    tableBody.innerHTML = "";
-    renderTable();
+  filterInput.onkeyup = () => {
+    const searchValue = filterInput.value;
 
-  }
+    if (searchValue) {
+      const tempData = persons.filter(person => person.phone.indexOf(searchValue) > -1);
 
-}
-
-function renderTable() {
-
-  createTable();
-
-}
-
-renderTable();
-
-function createResultTable(tempData) {
-
-  var tableBody = document.getElementById('tableResult_body');
-
-  for (var i = 0; i < tempData.length; i++) {
-    var row = document.createElement("tr");
-
-    for (var key in tempData[i]) {
-      var cell = document.createElement("td");
-
-      cell.innerHTML = tempData[i][key];
-      row.appendChild(cell);
+      createTable(tempData);
+    } else {
+      createTable(persons);
     }
-
-    tableBody.appendChild(row);
-  }
-
-}
-
-buttonSearch.onclick = () => {
-  if (document.getElementById("filter").value != "") {
-   var tempData = persons.filter(
-      function(person) {
-        return person.phone.indexOf(document.getElementById("filter").value) != -1;
-      })
-    console.log(tempData);
-    document.getElementById('tableResult_body').innerHTML = "";
-    createResultTable(tempData);
-  }
-
-  document.getElementById("filter").value = "";
-
-}
-
-
-
-
-
-  });
-
+  };
+});
