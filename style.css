@@ -1,42 +1,46 @@
 .main {
-  position: relative;
-  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
   margin: 0 auto;
 }
 
-.table {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: 1px solid black;
+.Square {
+  display: flex;
+  flex-flow: column wrap;
+  width:200px;
+  height:200px;
+  margin: 10px;
+  justify-content:space-around;
 }
 
-.table th {
-  text-align: left;
-  border-bottom: 1px solid #dfdfdf;
-  background: #dfdfdf50;
+.Desc{
+  flex-flow: column wrap;
+
 }
 
-.input {
-  position: relative;
-  width: 50%;
-  height: 20px;
-  margin: 10px 0;
-  border-radius: 10px 10px 10px 10px;
+.Label{
+  width:90px;
+  height:100px;
 }
 
-.buttonConfirm {
-  position: relative;
-  width: 70px;
-  height: 20px;
-  margin-bottom: 10px;
-  background: white;
+.Name{
+  font-size:10px;
 }
 
-.buttonSearch {
-  position: relative;
-  width: 70px;
-  height: 20px;
-  margin-bottom: 10px;
-  background: white;
+.Params{
+  font-size:10px;
+  color:grey;
+  font-style:italic;
+}
+
+.Price{
+  font-size:15px;
+  color:DeepSkyBlue;
+
+}
+
+.OldPrice{
+  font-size:10px;
+  color:OrangeRed;
+  text-decoration:line-through	;
 }
