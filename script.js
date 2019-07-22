@@ -27,19 +27,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
     Name: 0,
     Params: 0,
     Price: 0,
-
-
   };
 
   const oldPrice = {
-    OldPrice:0
-  }
-
-  const img = {
-    PictureUrl: 0
+    OldPrice: 0,
   };
 
-
+  const img = {
+    PictureUrl: 0,
+  };
 
   function addInfo() {
     const parentContainer = document.getElementsByClassName('main')[0];
@@ -49,10 +45,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
       img.PictureUrl = books[i].PictureUrl;
 
       description.Name = books[i].Name;
-      description.Params =books[i].Params['Производитель'];
-      description.Price = books[i].Price;
-
-
+      description.Params = books[i].Params['Производитель'];
+      description.Price = `${books[i].Price} ₽`;
 
       const label = document.createElement('img');
       const info = document.createElement('div');
@@ -66,13 +60,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
       info.appendChild(label);
 
-      old.innerHTML  = oldPrice.OldPrice +" P";
-      old.className = "Oldprice";
+      old.innerHTML = `${oldPrice.OldPrice} P`;
+      old.className = 'Oldprice';
       sale.className = 'Sale';
-      sale.innerHTML = "Скидка " + Math.floor(100 -(description.Price*100/oldPrice.OldPrice)) + "%";
-      prices.className = "Prices";
-
-
+      sale.innerHTML = `Скидка ${Math.floor(
+        100 - (parseInt(description.Price) * 100) / oldPrice.OldPrice
+      )}%`;
+      prices.className = 'Prices';
 
       for (const key in description) {
         const desc = document.createElement('div');
@@ -88,13 +82,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
       prices.appendChild(sale);
       info.className = 'Square';
 
-
       parentContainer.appendChild(info);
-
-
     }
   }
 
   addInfo();
-
 });
