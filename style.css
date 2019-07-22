@@ -1,0 +1,65 @@
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto;
+//font-size:10px;
+//color:grey;
+
+}
+
+.Square {
+  display: flex;
+  flex-flow: column wrap;
+  width:150px;
+  height:200px;
+  margin: 10px;
+  justify-content:space-around;
+}
+
+.Desc{
+  flex-flow: column wrap;
+
+}
+
+.Label{
+  width:90px;
+  height:100px;
+}
+
+.Name{
+  font-size:10px;
+}
+
+.Params{
+  font-size:10px;
+  color:grey;
+  font-style:italic;
+}
+
+.Price{
+  font-size:15px;
+  color:DeepSkyBlue;
+
+}
+
+.Oldprice{
+  font-size:10px;
+  color:OrangeRed;
+  text-decoration:line-through;
+  position: relative;
+}
+
+.Sale{
+  color:OrangeRed;
+  font-size:10px;
+
+  top:200px;
+  left:45px;
+  margin-left:5px;
+
+}
+
+.Prices{
+  display: flex;
+  flex-flow: row wrap;
+}
