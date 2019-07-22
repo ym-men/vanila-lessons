@@ -21,7 +21,7 @@
 }
 
 .Square:hover {
-  border: 3px solid #13405530;
+  border: 3px solid #13405550;
 }
 
 .Desc{
@@ -45,23 +45,22 @@
 }
 
 .Price{
-  font-size:15px;
+  font-size:16px;
   color:DeepSkyBlue;
 }
 
-.Oldprice{
+.OldPrice{
   font-size:15px;
-  color:OrangeRed;
+  color: black;
   text-decoration: line-through !important;
   position: relative;
 }
 
 .Sale{
-  color:OrangeRed;
+  color: white;
   font-size:15px;
-  top:200px;
-  left:45px;
-  margin-left:5px;
+  padding: 4px 6px;
+  background: #4972ff;
 
 }
 
