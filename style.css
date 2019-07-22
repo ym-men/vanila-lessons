@@ -2,18 +2,26 @@
   display: flex;
   flex-flow: row wrap;
   margin: 0 auto;
+  max-width: 1400px;
 //font-size:10px;
 //color:grey;
-
 }
 
 .Square {
   display: flex;
   flex-flow: column wrap;
-  width:150px;
-  height:200px;
-  margin: 10px;
+  width:200px;
+  // height:200px;
+  margin: 15px;
   justify-content:space-around;
+  // background: #dedede50;
+  border: 3px solid #dedede70;
+  border-radius: 5px;
+  padding: 0px 15px 15px 15px;
+}
+
+.Square:hover {
+  border: 3px solid #13405530;
 }
 
 .Desc{
@@ -22,16 +30,16 @@
 }
 
 .Label{
-  width:90px;
-  height:100px;
+  width: 90%;
+  margin: 20px auto;
 }
 
 .Name{
-  font-size:10px;
+  font-size:15px;
 }
 
 .Params{
-  font-size:10px;
+  font-size:14px;
   color:grey;
   font-style:italic;
 }
@@ -39,20 +47,18 @@
 .Price{
   font-size:15px;
   color:DeepSkyBlue;
-
 }
 
 .Oldprice{
-  font-size:10px;
+  font-size:15px;
   color:OrangeRed;
-  text-decoration:line-through;
+  text-decoration: line-through !important;
   position: relative;
 }
 
 .Sale{
   color:OrangeRed;
-  font-size:10px;
-
+  font-size:15px;
   top:200px;
   left:45px;
   margin-left:5px;
@@ -62,4 +68,5 @@
 .Prices{
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-between;
 }
