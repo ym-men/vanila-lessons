@@ -47,6 +47,30 @@
 .Price{
   font-size:16px;
   color:DeepSkyBlue;
+  transition: all 0.3s;
+  position: relative;
+  width: 48px;
+  margin: 10px 0px;
+}
+
+.Square:hover > div.Price{
+  border: 2px solid DeepSkyBlue;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+
+.Square:hover > div.Price:before{
+  content: '+';
+  font-weight: bold;
+  background: DeepSkyBlue;
+  font-size: 17px;
+  padding: 5px 8px 6px 8px;
+  color: white;
+  display: block;
+  position: absolute;
+  left: 60px;
+  top: -2px;
 }
 
 .OldPrice{

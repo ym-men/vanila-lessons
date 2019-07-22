@@ -41,7 +41,19 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
       addElement(info, 'Name', element.Name);
       addElement(info, 'Params', element.Params['Производитель']);
-      addElement(info, 'Price', `${element.Price} ₽`);
+
+      // Кнопка покупки
+      const price = document.createElement('div');
+
+      price.className = 'Price';
+      price.innerHTML = `${element.Price} ₽`;
+
+      price.onclick = () => alert(element.Price);
+
+      info.appendChild(price);
+      //
+
+      // addElement(info, 'Price', `${element.Price} ₽`);
 
       const prices = document.createElement('div');
 
