@@ -2,12 +2,15 @@
   display: flex;
   flex-flow: row wrap;
   margin: 0 auto;
+//font-size:10px;
+//color:grey;
+
 }
 
 .Square {
   display: flex;
   flex-flow: column wrap;
-  width:200px;
+  width:150px;
   height:200px;
   margin: 10px;
   justify-content:space-around;
@@ -39,8 +42,24 @@
 
 }
 
-.OldPrice{
+.Oldprice{
   font-size:10px;
   color:OrangeRed;
-  text-decoration:line-through	;
+  text-decoration:line-through;
+  position: relative;
+}
+
+.Sale{
+  color:OrangeRed;
+  font-size:10px;
+
+  top:200px;
+  left:45px;
+  margin-left:5px;
+
+}
+
+.Prices{
+  display: flex;
+  flex-flow: row wrap;
 }
