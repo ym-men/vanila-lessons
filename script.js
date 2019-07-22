@@ -20,8 +20,6 @@ function loadDescription() {
 
 document.addEventListener('DOMContentLoaded', function(event) {
   loadDescription();
-  console.log(books);
-  console.log(books.length);
 
   const description = {
     Name: 0,
@@ -30,60 +28,60 @@ document.addEventListener('DOMContentLoaded', function(event) {
   };
 
   const oldPrice = {
-    OldPrice: 0,
-  };
+    OldPrice:0
+  }
 
   const img = {
-    PictureUrl: 0,
+    PictureUrl: 0
   };
 
+  const parentContainer = document.getElementsByClassName('main')[0];
+
   function addInfo() {
-    const parentContainer = document.getElementsByClassName('main')[0];
 
-    for (let i = 0; i < books.length; i++) {
-      oldPrice.OldPrice = books[i].OldPrice;
-      img.PictureUrl = books[i].PictureUrl;
+    const addElement = (parentContainer, className, innerHTML) => {
+      const elem = document.createElement('div');
+      elem.className = className;
+      elem.innerHTML = innerHTML;
 
-      description.Name = books[i].Name;
-      description.Params = books[i].Params['Производитель'];
-      description.Price = `${books[i].Price} ₽`;
+      parentContainer.appendChild(elem);
+    }
 
+    books.forEach(function(element)
+    {
       const label = document.createElement('img');
-      const info = document.createElement('div');
-      const old = document.createElement('div');
-      const sale = document.createElement('div');
-
-      const prices = document.createElement('div');
-
+      img.PictureUrl = element.PictureUrl;
       label.className = 'Label';
       label.src = img.PictureUrl;
 
+      const info = document.createElement('div');
+
+      description.Name = element.Name;
+      description.Params =element.Params['Производитель'];
+      description.Price = element.Price + " ₽";
+
+      oldPrice.OldPrice = element.OldPrice;
+
+      const prices = document.createElement('div');
+      prices.className = "Prices";
+
       info.appendChild(label);
 
-      old.innerHTML = `${oldPrice.OldPrice} P`;
-      old.className = 'Oldprice';
-      sale.className = 'Sale';
-      sale.innerHTML = `Скидка ${Math.floor(
-        100 - (parseInt(description.Price) * 100) / oldPrice.OldPrice
-      )}%`;
-      prices.className = 'Prices';
-
       for (const key in description) {
-        const desc = document.createElement('div');
+        addElement(info,key,description[key]);
 
-        desc.className = key;
-        desc.innerHTML = description[key];
-
-        info.appendChild(desc);
       }
+      addElement(prices,"Oldprice",oldPrice.OldPrice +" ₽");
+      addElement(prices,'Sale',"Скидка " + Math.floor(100 -(parseInt(description.Price)*100/oldPrice.OldPrice)) + "%");
+
+
 
       info.appendChild(prices);
-      prices.appendChild(old);
-      prices.appendChild(sale);
       info.className = 'Square';
-
       parentContainer.appendChild(info);
-    }
+
+
+    });
   }
 
   addInfo();
