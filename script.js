@@ -1,5 +1,3 @@
-let books;
-
 function loadDescription() {
   const xhr = new XMLHttpRequest();
 
@@ -10,79 +8,58 @@ function loadDescription() {
   );
 
   xhr.send();
-  books = this.JSON.parse(xhr.responseText);
 
-  console.log(books);
-  console.log(books.length);
-
-  return books;
+  return this.JSON.parse(xhr.responseText);
 }
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  loadDescription();
-
-  const description = {
-    Name: 0,
-    Params: 0,
-    Price: 0,
-  };
-
-  const oldPrice = {
-    OldPrice:0
-  }
-
-  const img = {
-    PictureUrl: 0
-  };
+  const books = loadDescription();
 
   const parentContainer = document.getElementsByClassName('main')[0];
 
-  function addInfo() {
+  const addElement = (container, className, innerHTML) => {
+    const elem = document.createElement('div');
 
-    const addElement = (parentContainer, className, innerHTML) => {
-      const elem = document.createElement('div');
-      elem.className = className;
-      elem.innerHTML = innerHTML;
+    elem.className = className;
+    elem.innerHTML = innerHTML;
 
-      parentContainer.appendChild(elem);
-    }
+    container.appendChild(elem);
+  };
 
-    books.forEach(function(element)
-    {
-      const label = document.createElement('img');
-      img.PictureUrl = element.PictureUrl;
-      label.className = 'Label';
-      label.src = img.PictureUrl;
-
+  function renderBooks() {
+    books.forEach(function(element) {
       const info = document.createElement('div');
 
-      description.Name = element.Name;
-      description.Params =element.Params['Производитель'];
-      description.Price = element.Price + " ₽";
+      info.className = 'Square';
 
-      oldPrice.OldPrice = element.OldPrice;
+      const image = document.createElement('img');
+
+      image.className = 'Label';
+      image.src = element.PictureUrl;
+
+      info.appendChild(image);
+
+      addElement(info, 'Name', element.Name);
+      addElement(info, 'Params', element.Params['Производитель']);
+      addElement(info, 'Price', `${element.Price} ₽`);
 
       const prices = document.createElement('div');
-      prices.className = "Prices";
 
-      info.appendChild(label);
+      prices.className = 'Prices';
 
-      for (const key in description) {
-        addElement(info,key,description[key]);
+      addElement(prices, 'OldPrice', `${element.OldPrice} ₽`);
 
-      }
-      addElement(prices,"Oldprice",oldPrice.OldPrice +" ₽");
-      addElement(prices,'Sale',"Скидка " + Math.floor(100 -(parseInt(description.Price)*100/oldPrice.OldPrice)) + "%");
-
-
+      addElement(
+        prices,
+        'Sale',
+        `Скидка ${Math.floor(100 - (element.Price * 100) / element.OldPrice)}%`
+      );
 
       info.appendChild(prices);
-      info.className = 'Square';
+
       parentContainer.appendChild(info);
-
-
     });
   }
 
-  addInfo();
+  renderBooks();
 });
