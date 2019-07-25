@@ -1,4 +1,4 @@
-function loadDescription() {
+function loadBooks() {
   const xhr = new XMLHttpRequest();
 
   xhr.open(
@@ -12,8 +12,12 @@ function loadDescription() {
   return this.JSON.parse(xhr.responseText);
 }
 
+let chosenBooks = [];
+
 document.addEventListener('DOMContentLoaded', function(event) {
-  const books = loadDescription();
+  let pickedBooks = [];
+
+  const books = loadBooks();
 
   const parentContainer = document.getElementsByClassName('main')[0];
 
@@ -48,10 +52,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
       price.className = 'Price';
       price.innerHTML = `${element.Price} ₽`;
 
-      price.onclick = () => alert(element.Price);
+      price.onclick = function() {
+        pickedBooks = books.filter(el => parseInt(price.innerHTML, 10) === el.Price);
+        window.chosenBooks.push(pickedBooks[0]);
+        circle.innerHTML = window.chosenBooks.length;
+         console.log(window.chosenBooks);
+      };
 
       info.appendChild(price);
-      //
 
       // addElement(info, 'Price', `${element.Price} ₽`);
 
@@ -74,4 +82,19 @@ document.addEventListener('DOMContentLoaded', function(event) {
   }
 
   renderBooks();
+
+  document.querySelector('[href="#openModal"]').addEventListener('click', function() {
+    document.getElementById('itemsWrapper').style.display = 'none';
+    document.getElementById('openModal').style.display = 'block';
+
+    window.renderBasket();
+    console.log(chosenBooks);
+
+  });
+  document.querySelector('[href="#close"]').addEventListener('click', function() {
+    document.getElementById('itemsWrapper').style.display = 'block';
+    document.getElementById('openModal').style.display = 'none';
+    window.chosenBooks = [];
+    //circle.innerHTML = ' ';
+  });
 });

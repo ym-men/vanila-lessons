@@ -1,14 +1,83 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" />
-    <script src="script.js"></script>
+    <script src="renderBooks.js"></script>
+    <script src="renderBasket.js"></script>
+    <script src="renderHeader.js"></script>
     <link href="style.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class='main'>
+
+
+<div id ='itemsWrapper' >
+    <div class = 'head'></div>
+
+    <input type = 'button' id = 'buttonBasket' value='Корзина' href="#openModal">
+    <div id="circle"></div>
+    <div class='main' id = 'main'>
+    </div>
+</div>
+
+<div id="openModal" class="modal" style="display:none">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+                <h3 class="modal-title">Корзина</h3>
+               <input type = 'button' id ='buttonOrder' class="close" value='Вернуться в магазин' href="#close">
+
+            </div>
+            <div class="modal-body" id = "modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            Товар
+                        </th>
+                        <th>
+                            Наименование
+                        </th>
+                        <th>
+                            Артикул
+                        </th>
+                        <th>
+                            Количество
+                        </th>
+                        <th>
+                            Стоимость
+                        </th>
+                        <th>
+                            Удалить
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id='table_body'>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+        <div class = "modal-footer">
+            <div class = "Preprice">
+            <div id = 'preAmount'>Стоимость:</div> <div id = 'preAmountCount'></div>
+            </div>
+            <div class = 'Delivery'>Бесплатная доставка*</div>
+            <div class = 'FullPrice'>
+                <div id = 'FullAmount'>Общая стоимость:</div>
+                <div id = 'FullAmountCount'></div>
+            </div>
+            <input type = 'button' class = "MakeOrderButton" value = "Оформить заказ" href="#finishOrder">
+
+        </div>
+    </div>
+
 
 </div>
 
