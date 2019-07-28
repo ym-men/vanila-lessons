@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   const tableBody = document.getElementById('table_body');
 
-  let chosenBooksO = [
+  const chosenBooksO = [
     {
       OldPrice: 2800,
       Price: 1385,
@@ -213,11 +213,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
   };
 
   window.chosenBooks = [];
-  var preAmountCountValue = 0;
-  var fullAmountCountValue = 0;
+  let preAmountCountValue = 0;
+  let fullAmountCountValue = 0;
 
   function renderBasket() {
-
     tableBody.innerHTML = '';
 
     let chosenBooks = window.chosenBooks;
@@ -254,14 +253,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
           el.parentNode.removeChild(el);
 
-          window.chosenBooks = chosenBooks.filter(book => book.ItemId !== element.ItemId);
-          console.log("удаленные позиции");
+          window.chosenBooks = window.chosenBooks.filter(book => book.ItemId !== element.ItemId);
+          console.log('удаленные позиции');
           console.log(window.chosenBooks);
 
-            window.renderBasket();
-
-
-
+          window.renderBasket();
         };
 
         row.appendChild(btn);
@@ -270,25 +266,19 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
         chosenBooks = chosenBooks.filter(function(el) {
           return element.ItemId !== el.ItemId;
-
-
         });
       }
 
-      console.log("chosenBooks");
+      console.log('chosenBooks');
       console.log(chosenBooks);
 
-
-
-      preAmountCountValue += element.Price*repeatable.length;
+      preAmountCountValue += element.Price * repeatable.length;
 
       preAmountCount.innerHTML = `${preAmountCountValue}₽`;
 
-      fullAmountCountValue +=element.Price*repeatable.length;
+      fullAmountCountValue += element.Price * repeatable.length;
       FullAmountCount.innerHTML = `${fullAmountCountValue}₽`;
     });
-
-
   }
   window.renderBasket = renderBasket;
 
