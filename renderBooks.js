@@ -12,10 +12,11 @@ function loadBooks() {
   return this.JSON.parse(xhr.responseText);
 }
 
-let chosenBooks = [];
+//let chosenBooks = [];
+let pickedBooks = [];
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  let pickedBooks = [];
+
 
   const books = loadBooks();
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
     container.appendChild(elem);
   };
+
 
   function renderBooks() {
     books.forEach(function(element) {
@@ -56,9 +58,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
         pickedBooks = books.filter(el => parseInt(price.innerHTML, 10) === el.Price);
         window.chosenBooks.push(pickedBooks[0]);
         console.log(pickedBooks[0]);
-        circle.innerHTML = window.chosenBooks.length;
+        window.circle.innerHTML = window.chosenBooks.length;
          console.log(window.chosenBooks);
 
+        test = window.chosenBooks;
       };
 
       info.appendChild(price);

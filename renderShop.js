@@ -1,11 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(event) {
-     document.querySelector('[href="#finishOrder"]').addEventListener('click', function() {
-        document.getElementById('itemsWrapper').style.display = 'none';
-        document.getElementById('openModal').style.display = 'none';
-         document.getElementById('PayPage').style.display = 'block';
-
-
-     });
 
      document.querySelector('[href="#openModal"]').addEventListener('click', function() {
          document.getElementById('itemsWrapper').style.display = 'none';
@@ -20,10 +13,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
          document.getElementById('itemsWrapper').style.display = 'block';
          document.getElementById('openModal').style.display = 'none';
          document.getElementById('PayPage').style.display = 'none';
-         window.renderBasket();
 
          window.chosenBooks = [];
-         // circle.innerHTML = ' ';
+
      });
+
+    document.querySelector('[href="#finishOrder"]').addEventListener('click', function() {
+        document.getElementById('itemsWrapper').style.display = 'none';
+        document.getElementById('openModal').style.display = 'none';
+        document.getElementById('PayPage').style.display = 'block';
+
+
+    });
 
 })

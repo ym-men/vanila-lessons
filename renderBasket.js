@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   function renderBasket() {
 
-    document.getElementsByClassName("table").innerHTML = ' ';
+    //document.getElementsByClassName("modal-body").innerHTML = ' ';
 
     let chosenBooks = window.chosenBooks;
 
@@ -227,6 +227,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
         return element.ItemId === el.ItemId;
       });
 
+      console.log('repeate');
+      console.log(repeatable);
       if (repeatable.length !== 0) {
         const row = document.createElement('tr');
 
@@ -253,8 +255,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
           el.parentNode.removeChild(el);
 
           window.chosenBooks = chosenBooks.filter(book => book.ItemId !== element.ItemId);
-          console.log(chosenBooks);
-          console.log(1);
+          console.log("удаленные позиции");
+          console.log(window.chosenBooks);
+
+
+
         };
 
         row.appendChild(btn);
@@ -263,8 +268,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
         chosenBooks = chosenBooks.filter(function(el) {
           return element.ItemId !== el.ItemId;
+
+
         });
       }
+
+      console.log("chosenBooks");
+      console.log(chosenBooks);
+
+
 
       preAmountCountValue += element.Price*repeatable.length;
 
