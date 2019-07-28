@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
          document.getElementById('openModal').style.display = 'none';
          document.getElementById('PayPage').style.display = 'none';
 
-         window.chosenBooks = [];
+         // window.chosenBooks = [];
 
      });
 

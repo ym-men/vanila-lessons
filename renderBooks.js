@@ -55,10 +55,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
       price.innerHTML = `${element.Price} ₽`;
 
       price.onclick = function() {
-        pickedBooks = books.filter(el => parseInt(price.innerHTML, 10) === el.Price);
+        pickedBooks = books.filter(el => element.ItemId === el.ItemId);
         window.chosenBooks.push(pickedBooks[0]);
         console.log(pickedBooks[0]);
         window.circle.innerHTML = window.chosenBooks.length;
+
+          window.renderBasket();
+
          console.log(window.chosenBooks);
 
         test = window.chosenBooks;
