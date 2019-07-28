@@ -217,6 +217,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
   var fullAmountCountValue = 0;
 
   function renderBasket() {
+
+    document.getElementsByClassName("table").innerHTML = ' ';
+
     let chosenBooks = window.chosenBooks;
 
     chosenBooks.forEach(function(element) {
@@ -250,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           el.parentNode.removeChild(el);
 
           window.chosenBooks = chosenBooks.filter(book => book.ItemId !== element.ItemId);
-          console.log(window.chosenBooks);
+          console.log(chosenBooks);
           console.log(1);
         };
 

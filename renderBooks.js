@@ -55,8 +55,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       price.onclick = function() {
         pickedBooks = books.filter(el => parseInt(price.innerHTML, 10) === el.Price);
         window.chosenBooks.push(pickedBooks[0]);
+        console.log(pickedBooks[0]);
         circle.innerHTML = window.chosenBooks.length;
          console.log(window.chosenBooks);
+
       };
 
       info.appendChild(price);
@@ -83,18 +85,5 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   renderBooks();
 
-  document.querySelector('[href="#openModal"]').addEventListener('click', function() {
-    document.getElementById('itemsWrapper').style.display = 'none';
-    document.getElementById('openModal').style.display = 'block';
 
-    window.renderBasket();
-    console.log(chosenBooks);
-
-  });
-  document.querySelector('[href="#close"]').addEventListener('click', function() {
-    document.getElementById('itemsWrapper').style.display = 'block';
-    document.getElementById('openModal').style.display = 'none';
-    window.chosenBooks = [];
-    //circle.innerHTML = ' ';
-  });
 });

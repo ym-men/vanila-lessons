@@ -1,0 +1,174 @@
+.main {
+  display: flex;
+  flex-flow: row wrap;
+ margin: 0 auto;
+  max-width: 1400px;
+//font-size:10px;
+//color:grey;
+
+  position:relative;
+  top:110px;
+  z-index:0;
+}
+
+/*body {
+
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+//color: #292b2c;
+    background-color: #fff;
+// margin: 0;
+    padding: 0;
+}*/
+
+.Square {
+  display: flex;
+  flex-flow: column wrap;
+  width:200px;
+  // height:200px;
+  margin: 15px;
+  justify-content:space-around;
+  // background: #dedede50;
+  border: 3px solid #dedede70;
+  border-radius: 5px;
+  padding: 0px 15px 15px 15px;
+}
+
+.Square:hover {
+  border: 3px solid #13405550;
+}
+
+.Desc{
+  flex-flow: column wrap;
+
+}
+
+.Label{
+  width: 90%;
+  margin: 20px auto;
+}
+
+.Name{
+  font-size:15px;
+}
+
+.Params{
+  font-size:14px;
+  color:grey;
+  font-style:italic;
+}
+
+.Price{
+  font-size:16px;
+  color:DeepSkyBlue;
+  transition: all 0.3s;
+  position: relative;
+  width: 48px;
+  margin: 10px 0px;
+}
+
+.Square:hover > div.Price{
+  border: 2px solid DeepSkyBlue;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+
+.Square:hover > div.Price:before{
+  content: '+';
+  font-weight: bold;
+  background: DeepSkyBlue;
+  font-size: 17px;
+  padding: 5px 8px 6px 8px;
+  color: white;
+  display: block;
+  position: absolute;
+  left: 60px;
+  top: -2px;
+
+}
+
+.OldPrice{
+  font-size:15px;
+  color: black;
+  text-decoration: line-through !important;
+  position: relative;
+}
+
+.Sale{
+  color: white;
+  font-size:15px;
+  padding: 4px 6px;
+  background: #4972ff;
+
+}
+
+.Prices{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+/*----------------------*/
+.head{
+  position:fixed;
+  background-color:Gainsboro;
+margin: 0 0;
+  max-width: 2000px;
+  width:1800px;
+  height:50px;
+  z-index:1;
+  top: 0px;
+  left: 0px;
+
+}
+
+#buttonBasket{
+  position:fixed;
+  z-index:2;
+  right:40px;
+  margin-top:5px;
+  font-weight: bold;
+  background: DeepSkyBlue;
+  border-radius: 10px;
+  width:80px;
+  height:25px;
+}
+
+#circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 25px;
+  border-radius: 25px;
+  border-radius: 25px;
+  background: DeepSkyBlue;
+  position:fixed;
+  z-index:2;
+  right:15px;
+  margin-top:8px;
+}
+
+.infoBook {
+    display: flex;
+    flex-flow: column wrap;
+    width:500px;
+    height:40px;
+    margin: 15px;
+    justify-content:space-around;
+    border: 3px solid #dedede70;
+    border-radius: 5px;
+    padding: 0px 15px 15px 15px;
+
+}
+
+
+button,  img {
+  vertical-align: top;
+
+  display: inline-block;
+  margin-top:10px;
+
+}
+
