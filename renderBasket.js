@@ -213,11 +213,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
   };
 
   window.chosenBooks = [];
-  let preAmountCountValue = 0;
-  let fullAmountCountValue = 0;
-
 
   function renderBasket() {
+    let preAmountCountValue = 0;
+    let fullAmountCountValue = 0;
 
     tableBody.innerHTML = '';
 
@@ -279,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
         });
       }
+
 
       preAmountCountValue += repeatable.length * element.Price;
 
