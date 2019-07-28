@@ -213,12 +213,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
   };
 
   window.chosenBooks = [];
-  var preAmountCountValue = 0;
-  var fullAmountCountValue = 0;
+  let preAmountCountValue = 0;
+  let fullAmountCountValue = 0;
+
 
   function renderBasket() {
 
-    //document.getElementsByClassName("modal-body").innerHTML = ' ';
+    tableBody.innerHTML = '';
 
     let chosenBooks = window.chosenBooks;
 
@@ -227,8 +228,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
         return element.ItemId === el.ItemId;
       });
 
-      console.log('repeate');
-      console.log(repeatable);
       if (repeatable.length !== 0) {
         const row = document.createElement('tr');
 
@@ -244,6 +243,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
         addCell(row, 'AmountBasket', `${repeatable.length}шт`);
         addCell(row, 'PriceBasket', `${element.Price} ₽`);
 
+
+
+
         const btn = document.createElement('button');
 
         btn.className = 'DeleteBtnBasket';
@@ -254,36 +256,38 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
           el.parentNode.removeChild(el);
 
-          window.chosenBooks = chosenBooks.filter(book => book.ItemId !== element.ItemId);
-          console.log("удаленные позиции");
-          console.log(window.chosenBooks);
+          window.chosenBooks = window.chosenBooks.filter(book => book.ItemId !== element.ItemId);
+          window.circle.innerHTML = window.chosenBooks.length;
 
+          preAmountCountValue -= repeatable.length * element.Price;
 
+          fullAmountCountValue -= element.Price * repeatable.length;
+          window.preAmountCount.innerHTML = `${preAmountCountValue}₽`;
+          window.FullAmountCount.innerHTML = `${fullAmountCountValue}₽`;
 
         };
+
+
 
         row.appendChild(btn);
 
         tableBody.appendChild(row);
 
-        chosenBooks = chosenBooks.filter(function(el) {
+        chosenBooks = chosenBooks.filter(function (el) {
           return element.ItemId !== el.ItemId;
 
 
         });
       }
 
-      console.log("chosenBooks");
-      console.log(chosenBooks);
+      preAmountCountValue += repeatable.length * element.Price;
+
+      window.preAmountCount.innerHTML = `${preAmountCountValue}₽`;
 
 
 
-      preAmountCountValue += element.Price*repeatable.length;
-
-      preAmountCount.innerHTML = `${preAmountCountValue}₽`;
-
-      fullAmountCountValue +=element.Price*repeatable.length;
-      FullAmountCount.innerHTML = `${fullAmountCountValue}₽`;
+      fullAmountCountValue += element.Price * repeatable.length;
+      window.FullAmountCount.innerHTML = `${fullAmountCountValue}₽`;
     });
 
 
