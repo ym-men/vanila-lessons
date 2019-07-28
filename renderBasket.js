@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   function renderBasket() {
 
-    //document.getElementsByClassName("modal-body").innerHTML = ' ';
+    tableBody.innerHTML = '';
 
     let chosenBooks = window.chosenBooks;
 
@@ -257,6 +257,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
           window.chosenBooks = chosenBooks.filter(book => book.ItemId !== element.ItemId);
           console.log("удаленные позиции");
           console.log(window.chosenBooks);
+
+            window.renderBasket();
 
 
 
